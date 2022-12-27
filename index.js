@@ -3,13 +3,15 @@ const app = express();
 const cors = require("cors");
 const dbConnect = require("./utils/DBConnnect");
 require("dotenv").config();
-// require("../server/utils/DBConnnect");
 
+// port
 const port = process.env.PORT || 8000;
 
+// middleware
 app.use(cors());
 app.use(express.json());
 
+// mongo server link
 dbConnect();
 
 app.use("*", (req, res) => {

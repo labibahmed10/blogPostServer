@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 mongoose.set("strictQuery", false);
 
-const url = `mongodb+srv://${process.env.USER_NAME}:${process.env.USER_PASS}@cluster0.zqp7w.mongodb.net/?retryWrites=true&w=majority`;
+// mongo db link
+const url = `mongodb+srv://${process.env.USER_NAME}:${process.env.USER_PASS}@cluster0.zqp7w.mongodb.net/blogPost`;
 
 const dbConnect = async () => {
    try {
