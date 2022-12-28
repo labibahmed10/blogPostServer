@@ -1,7 +1,7 @@
 const BlogPostModel = require("../model/BlogPost");
 
 exports.getAllBlogsService = async () => {
-   const result = await BlogPostModel.find({});
+   const result = await BlogPostModel.find({}).sort({ seen: 1 }).select("-__v");
    return result;
 };
 
@@ -10,4 +10,14 @@ exports.addNewBlogService = async (blog) => {
    return result;
 };
 
+exports.updateOneBlog = async (id, update) => {
+   const findThatBlog = await BlogPostModel.findByIdAndUpdate({ _id: id }, update, {
+      runValidators: true,
+   }).select("-__v");
+   return findThatBlog;
+};
 
+exports.deleteABlogService = async (id) => {
+   const deleteOne = await BlogPostModel.deleteOne({ _id: id });
+   return deleteOne;
+};
