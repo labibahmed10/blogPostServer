@@ -8,5 +8,7 @@ const routes = express.Router();
 const blogController = require("../mvc/controller/blogPost.controller");
 
 routes.get("/all", blogController.getAllBlogs);
+routes.post("/addBlog", blogController.addNewBlog);
+
 
 module.exports = routes;
