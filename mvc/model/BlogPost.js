@@ -1,8 +1,6 @@
-"image", "text", "time/date", "";
-
 const mongoose = require("mongoose");
 
-const blogSchema = new mongoose.Schema(
+const blogSchema = mongoose.Schema(
    {
       title: {
          type: String,
@@ -22,7 +20,7 @@ const blogSchema = new mongoose.Schema(
       },
       tags: [String],
       seen: {
-         date: Date,
+         type: Date,
          default: Date.now(),
       },
    },
