@@ -9,7 +9,28 @@ exports.getAllBlogs = async (req, res, next) => {
          result,
       });
    } catch (error) {
-      console.log(error);
+      res.status(404).send({
+         success: false,
+         result: error,
+      });
+   }
+};
+
+exports.getBlogById = async (req, res, next) => {
+   const { id } = req.params;
+
+   try {
+      const result = await blogService.getBlogByIdService(id);
+
+      res.status(200).send({
+         success: true,
+         result,
+      });
+   } catch (error) {
+      res.status(404).send({
+         success: false,
+         result: error,
+      });
    }
 };
 
@@ -24,7 +45,10 @@ exports.addNewBlog = async (req, res, next) => {
          result,
       });
    } catch (error) {
-      console.log(error);
+      res.status(404).send({
+         success: false,
+         result: error,
+      });
    }
 };
 
@@ -40,7 +64,10 @@ exports.updateBlog = async (req, res, next) => {
          outcome,
       });
    } catch (error) {
-      console.log(error);
+      res.status(404).send({
+         success: false,
+         result: error,
+      });
    }
 };
 
@@ -55,6 +82,9 @@ exports.deleteABlog = async (req, res, next) => {
          ...deletedContent,
       });
    } catch (error) {
-      console.log(error);
+      res.status(404).send({
+         success: false,
+         result: error,
+      });
    }
 };

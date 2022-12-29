@@ -5,8 +5,13 @@ exports.getAllBlogsService = async () => {
    return result;
 };
 
+exports.getBlogByIdService = async (id) => {
+   const result = await BlogPostModel.findById(id);
+   return result;
+};
+
 exports.addNewBlogService = async (blog) => {
-   const result = await BlogPostModel.insertMany(blog);
+   const result = await BlogPostModel.create(blog);
    return result;
 };
 
