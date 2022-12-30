@@ -38,16 +38,15 @@ exports.addNewBlog = async (req, res, next) => {
    const blog = req.body;
 
    try {
-      const result = await blogService.addNewBlogService(blog);
-
+      await blogService.addNewBlogService(blog);
       res.status(200).send({
          success: true,
-         result,
+         result: "The blog was added successfully",
       });
    } catch (error) {
       res.status(404).send({
          success: false,
-         result: error,
+         error: "Could not added the blog, error occured",
       });
    }
 };

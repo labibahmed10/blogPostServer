@@ -1,12 +1,12 @@
 const BlogPostModel = require("../model/BlogPost");
 
 exports.getAllBlogsService = async () => {
-   const result = await BlogPostModel.find({}).sort({ seen: 1 }).select("-__v");
+   const result = await BlogPostModel.find({}).select("-__v");
    return result;
 };
 
 exports.getBlogByIdService = async (id) => {
-   const result = await BlogPostModel.findById(id);
+   const result = await BlogPostModel.findById(id).select("-__v");
    return result;
 };
 

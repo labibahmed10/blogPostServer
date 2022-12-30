@@ -6,7 +6,7 @@ const allBlogs = mongoose.Schema(
          type: String,
          require: [true, "Please provide a valid blog title"],
          trim: true,
-         minLength: [5, "Title must contain at least 5 characters"],
+         unique: [true, "The blog name must be unique"],
       },
       image: {
          type: String,
