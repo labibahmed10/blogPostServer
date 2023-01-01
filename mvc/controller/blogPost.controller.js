@@ -11,7 +11,7 @@ exports.getAllBlogs = async (req, res, next) => {
    } catch (error) {
       res.status(404).send({
          success: false,
-         result: error,
+         error: error,
       });
    }
 };
@@ -29,7 +29,7 @@ exports.getBlogById = async (req, res, next) => {
    } catch (error) {
       res.status(404).send({
          success: false,
-         result: error,
+         error: error?.message,
       });
    }
 };
@@ -38,10 +38,11 @@ exports.addNewBlog = async (req, res, next) => {
    const blog = req.body;
 
    try {
-      await blogService.addNewBlogService(blog);
+      const result = await blogService.addNewBlogService(blog);
       res.status(200).send({
          success: true,
-         result: "The blog was added successfully",
+         message: "The blog was added successfully",
+         result,
       });
    } catch (error) {
       res.status(404).send({
@@ -56,16 +57,17 @@ exports.updateBlog = async (req, res, next) => {
    const update = req.body;
 
    try {
-      const outcome = await blogService.updateOneBlog(id, update);
+      const result = await blogService.updateOneBlog(id, update);
 
       res.status(200).send({
          success: true,
-         outcome,
+         message: "The blog was updated",
+         result,
       });
    } catch (error) {
       res.status(404).send({
          success: false,
-         result: error,
+         error: error.message,
       });
    }
 };
@@ -83,7 +85,7 @@ exports.deleteABlog = async (req, res, next) => {
    } catch (error) {
       res.status(404).send({
          success: false,
-         result: error,
+         error: error,
       });
    }
 };

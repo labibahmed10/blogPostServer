@@ -19,6 +19,7 @@ exports.updateOneBlog = async (id, update) => {
    const findThatBlog = await BlogPostModel.findByIdAndUpdate({ _id: id }, update, {
       runValidators: true,
    }).select("-__v");
+   
    return findThatBlog;
 };
 
